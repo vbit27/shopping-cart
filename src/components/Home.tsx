@@ -11,7 +11,7 @@ const Home: FC = () => {
       component={Link}
       to="/shop"
     >
-      Home
+      Shop
     </Button>
   );
 };
