@@ -1,11 +1,19 @@
-import React from 'react';
+import { Button } from '@material-ui/core';
+import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 
-function Home() {
+const Home: FC = () => {
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <Button
+      size="large"
+      variant="contained"
+      color="primary"
+      component={Link}
+      to="/shop"
+    >
+      Home
+    </Button>
   );
-}
+};
 
 export default Home;
