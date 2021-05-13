@@ -12,11 +12,10 @@ const Shop = () => {
   });
 
   const incrementQuantity = (index: string) => {
-    let currentQuantity = quantity['101'];
-    console.log(quantity['101']);
-    setQuantity({ ...quantity, [index]: currentQuantity });
+    let currentQuantity = quantity[index as keyof Quantity];
 
-    console.log(quantity);
+    setQuantity({ ...quantity, [index]: ++currentQuantity });
+
     // const selectedItem = items.filter((item) => item.id === index);
   };
   /*
@@ -42,6 +41,15 @@ interface Items {
   image: string;
   id: string;
   price: number;
+}
+
+interface Quantity {
+  '101': number;
+  '102': number;
+  '103': number;
+  '104': number;
+  '105': number;
+  '106': number;
 }
 
 export default Shop;
