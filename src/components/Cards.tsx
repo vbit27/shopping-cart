@@ -23,6 +23,10 @@ const useStyles = makeStyles({
 const Cards: FC<CardsProp> = (props) => {
   const classes = useStyles();
 
+  const handleIncrement = (index: number) => {
+    props.incrementQuantity(index);
+  };
+
   return (
     <Grid container>
       {props.items.map((item: Items) => (
@@ -45,7 +49,12 @@ const Cards: FC<CardsProp> = (props) => {
               </CardContent>
             </CardActionArea>
             <CardActions>
-              <Button variant="outlined" size="small" color="primary">
+              <Button
+                variant="outlined"
+                size="small"
+                color="primary"
+                onClick={() => handleIncrement(item.id)}
+              >
                 +
               </Button>
               <Button variant="outlined" size="small" color="primary">
@@ -66,6 +75,7 @@ const Cards: FC<CardsProp> = (props) => {
 
 interface CardsProp {
   items: Items[];
+  incrementQuantity: (id: number) => void;
 }
 
 interface Items {

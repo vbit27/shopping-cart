@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Cards from './Cards';
 
 const Shop = () => {
-  return <Cards items={items} />;
+  const [quantity, setQuantity] = useState(1);
+
+  const increment = (index: number) => {
+    const selectedItem = items.filter((item) => item.id === index);
+    selectedItem[0].quantity++;
+    console.log(items);
+  };
+
+  return <Cards incrementQuantity={increment} items={items} />;
 };
 
 const items = [
