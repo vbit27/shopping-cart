@@ -23,14 +23,14 @@ const useStyles = makeStyles({
 const Cards: FC<CardsProp> = (props) => {
   const classes = useStyles();
 
-  const handleIncrement = (index: number) => {
+  const handleIncrement = (index: string) => {
     props.incrementQuantity(index);
   };
 
   return (
     <Grid container>
       {props.items.map((item: Items) => (
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid key={item.id} item xs={12} sm={6} md={4}>
           <Card className={classes.root}>
             <CardActionArea>
               <CardMedia
@@ -49,6 +49,9 @@ const Cards: FC<CardsProp> = (props) => {
               </CardContent>
             </CardActionArea>
             <CardActions>
+              <Typography variant="h5" component="p">
+                1{' '}
+              </Typography>
               <Button
                 variant="outlined"
                 size="small"
@@ -75,15 +78,14 @@ const Cards: FC<CardsProp> = (props) => {
 
 interface CardsProp {
   items: Items[];
-  incrementQuantity: (id: number) => void;
+  incrementQuantity: (id: string) => void;
 }
 
 interface Items {
   name: string;
   image: string;
-  id: number;
+  id: string;
   price: number;
-  quantity: number;
 }
 
 export default Cards;
