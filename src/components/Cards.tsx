@@ -27,6 +27,10 @@ const Cards: FC<CardsProp> = (props) => {
     props.incrementQuantity(index);
   };
 
+  const handleDecrement = (index: string) => {
+    props.decrementQuantity(index);
+  };
+
   return (
     <Grid container>
       {props.items.map((item: Items) => (
@@ -50,7 +54,7 @@ const Cards: FC<CardsProp> = (props) => {
             </CardActionArea>
             <CardActions>
               <Typography variant="h5" component="p">
-                1{' '}
+                {props.quantity[item.id as keyof Quantity]}
               </Typography>
               <Button
                 variant="outlined"
@@ -60,7 +64,12 @@ const Cards: FC<CardsProp> = (props) => {
               >
                 +
               </Button>
-              <Button variant="outlined" size="small" color="primary">
+              <Button
+                variant="outlined"
+                size="small"
+                color="primary"
+                onClick={() => handleDecrement(item.id)}
+              >
                 -
               </Button>
             </CardActions>
@@ -79,6 +88,8 @@ const Cards: FC<CardsProp> = (props) => {
 interface CardsProp {
   items: Items[];
   incrementQuantity: (id: string) => void;
+  decrementQuantity: (id: string) => void;
+  quantity: Quantity;
 }
 
 interface Items {
@@ -86,6 +97,15 @@ interface Items {
   image: string;
   id: string;
   price: number;
+}
+
+interface Quantity {
+  '101': number;
+  '102': number;
+  '103': number;
+  '104': number;
+  '105': number;
+  '106': number;
 }
 
 export default Cards;

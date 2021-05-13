@@ -15,16 +15,24 @@ const Shop = () => {
     let currentQuantity = quantity[index as keyof Quantity];
 
     setQuantity({ ...quantity, [index]: ++currentQuantity });
-
-    // const selectedItem = items.filter((item) => item.id === index);
+    console.log(quantity);
   };
-  /*
-  const updateQuantity = (updatedItem: Items) => {
-    setQuantity([...quantity, updatedItem])
 
-  }*/
+  const decrementQuantity = (index: string) => {
+    let currentQuantity = quantity[index as keyof Quantity];
 
-  return <Cards incrementQuantity={incrementQuantity} items={items} />;
+    setQuantity({ ...quantity, [index]: --currentQuantity });
+    console.log(quantity);
+  };
+
+  return (
+    <Cards
+      incrementQuantity={incrementQuantity}
+      decrementQuantity={decrementQuantity}
+      items={items}
+      quantity={quantity}
+    />
+  );
 };
 
 const items = [
