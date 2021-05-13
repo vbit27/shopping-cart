@@ -11,6 +11,8 @@ const Shop = () => {
     '106': 1,
   });
 
+  const [cart, setCart] = useState<CartObject>({});
+
   const incrementQuantity = (index: string) => {
     let currentQuantity = quantity[index as keyof Quantity];
 
@@ -21,8 +23,16 @@ const Shop = () => {
   const decrementQuantity = (index: string) => {
     let currentQuantity = quantity[index as keyof Quantity];
 
-    setQuantity({ ...quantity, [index]: --currentQuantity });
-    console.log(quantity);
+    if (currentQuantity > 1) {
+      setQuantity({ ...quantity, [index]: --currentQuantity });
+      console.log(quantity);
+    }
+  };
+
+  const addToCart = (index: string) => {
+    const selected = quantity[index as keyof Quantity];
+    setCart({ ...cart, [index]: (cart[index] || 0) + selected });
+    console.log(cart);
   };
 
   return (
@@ -31,6 +41,7 @@ const Shop = () => {
       decrementQuantity={decrementQuantity}
       items={items}
       quantity={quantity}
+      addToCart={addToCart}
     />
   );
 };
@@ -58,6 +69,10 @@ interface Quantity {
   '104': number;
   '105': number;
   '106': number;
+}
+
+interface CartObject {
+  [key: string]: number;
 }
 
 export default Shop;

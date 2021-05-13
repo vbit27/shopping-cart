@@ -31,6 +31,10 @@ const Cards: FC<CardsProp> = (props) => {
     props.decrementQuantity(index);
   };
 
+  const handleAddToCart = (index: string) => {
+    props.addToCart(index);
+  };
+
   return (
     <Grid container>
       {props.items.map((item: Items) => (
@@ -74,7 +78,12 @@ const Cards: FC<CardsProp> = (props) => {
               </Button>
             </CardActions>
             <CardActions>
-              <Button variant="contained" size="large" color="primary">
+              <Button
+                variant="contained"
+                size="large"
+                color="primary"
+                onClick={() => handleAddToCart(item.id)}
+              >
                 Add to Cart
               </Button>
             </CardActions>
@@ -89,6 +98,7 @@ interface CardsProp {
   items: Items[];
   incrementQuantity: (id: string) => void;
   decrementQuantity: (id: string) => void;
+  addToCart: (id: string) => void;
   quantity: Quantity;
 }
 
