@@ -32,7 +32,12 @@ const Shop = () => {
   const addToCart = (index: string) => {
     const selected = quantity[index as keyof Quantity];
     setCart({ ...cart, [index]: (cart[index] || 0) + selected });
+    resetQuantity(index);
     console.log(cart);
+  };
+
+  const resetQuantity = (index: string) => {
+    setQuantity({ ...quantity, [index]: 1 });
   };
 
   return (
