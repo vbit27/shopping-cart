@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { CartContext } from '../CartContext';
 import Cards from './Cards';
 
 const Shop = () => {
@@ -11,7 +12,7 @@ const Shop = () => {
     '106': 1,
   });
 
-  const [cart, setCart] = useState<CartObject>({});
+  const { cart, setCart } = useContext(CartContext)!;
 
   const incrementQuantity = (index: string) => {
     let currentQuantity = quantity[index as keyof Quantity];
