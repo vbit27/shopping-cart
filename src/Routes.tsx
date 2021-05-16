@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Cart from './components/Cart';
 import Header from './components/Header';
