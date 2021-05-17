@@ -26,7 +26,6 @@ export default function Header() {
 
   const itemTotal = Object.values(cart).reduce((a, b) => a + b, 0);
 
-  console.log(itemTotal);
   return (
     <div className={classes.root}>
       <AppBar position="static">
