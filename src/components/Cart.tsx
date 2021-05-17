@@ -38,9 +38,11 @@ const Cart: FC = () => {
   const handleDecrement = (key: string) => {
     const updatedCart = Object.assign({}, cart);
 
-    updatedCart[key] -= 1;
+    if (updatedCart[key] > 1) {
+      updatedCart[key] -= 1;
 
-    setCart(updatedCart);
+      setCart(updatedCart);
+    }
   };
 
   const handleRemove = (key: string) => {

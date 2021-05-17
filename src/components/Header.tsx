@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../CartContext';
+import { SiBower } from 'react-icons/si';
+import { FiShoppingCart } from 'react-icons/fi';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,6 +18,11 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    color: 'white',
+    fontSize: '2rem',
+  },
+  icon: {
+    fontSize: '1.5rem',
   },
 }));
 
@@ -36,15 +43,20 @@ export default function Header() {
             component={Link}
             to="/"
           >
-            Buy Things
+            <SiBower />
           </Typography>
           <Button color="inherit" component={Link} to="/shop">
             Shop
           </Button>
-          <Button color="inherit" component={Link} to="/cart">
-            Cart
+          <Button
+            color="inherit"
+            className={classes.icon}
+            component={Link}
+            to="/cart"
+          >
+            <FiShoppingCart />
           </Button>
-          <Typography variant="body2" component="p">
+          <Typography variant="body2" className={classes.icon} component="p">
             {itemTotal}
           </Typography>
         </Toolbar>
