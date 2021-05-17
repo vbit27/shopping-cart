@@ -26,6 +26,22 @@ const Cart: FC = () => {
     return selected[0];
   };
 
+  const handleIncrement = (key: string) => {
+    const updatedCart = Object.assign({}, cart);
+
+    updatedCart[key] += 1;
+
+    setCart(updatedCart);
+  };
+
+  const handleDecrement = (key: string) => {
+    const updatedCart = Object.assign({}, cart);
+
+    updatedCart[key] -= 1;
+
+    setCart(updatedCart);
+  };
+
   const handleRemove = (key: string) => {
     const updatedCart = Object.assign({}, cart);
     delete updatedCart[key];
@@ -56,6 +72,22 @@ const Cart: FC = () => {
             <Typography>{quantity * filterSelection(key).price} €</Typography>
           </CardContent>
           <CardActions>
+            <Button
+              variant="outlined"
+              size="small"
+              color="primary"
+              onClick={() => handleIncrement(key)}
+            >
+              +
+            </Button>
+            <Button
+              variant="outlined"
+              size="small"
+              color="primary"
+              onClick={() => handleDecrement(key)}
+            >
+              -
+            </Button>
             <Button
               size="small"
               color="primary"
