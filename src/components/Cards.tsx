@@ -15,6 +15,12 @@ const useStyles = makeStyles({
     margin: 20,
     padding: 20,
   },
+  container: {
+    marginTop: '10vh',
+    width: '80vw',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
   media: {
     height: 200,
   },
@@ -36,7 +42,7 @@ const Cards: FC<CardsProp> = (props) => {
   };
 
   return (
-    <Grid container>
+    <Grid container spacing={1} className={classes.container}>
       {props.items.map((item: Items) => (
         <Grid key={item.id} item xs={12} sm={6} md={4}>
           <Card className={classes.root}>
