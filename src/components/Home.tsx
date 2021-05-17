@@ -12,11 +12,13 @@ import { Link } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
-    backgroundColor: '#8cd4b7',
+    backgroundImage: `url(${
+      process.env.PUBLIC_URL + './images/background1.jpg'
+    })`,
+
+    backgroundColor: '#ffedd6',
   },
-  grid: {
-    width: '900',
-  },
+  grid: {},
   image: {
     backgroundImage: '../images/101.jpg',
   },
@@ -37,7 +39,7 @@ const Home: FC = () => {
       justify="space-between"
       alignItems="center"
     >
-      <Grid className={classes.grid}>
+      <Grid item xs={12} sm={6} md={4}>
         <Typography variant="h3">Your Online Grocery Shop</Typography>
         <Typography variant="h5">fresh and organic</Typography>
         <Button variant="contained" size="large" color="primary">
@@ -46,11 +48,7 @@ const Home: FC = () => {
           </Link>
         </Button>
       </Grid>
-      <Grid className={classes.grid}>
-        <Paper variant="outlined">
-          <img src="../images/background1.jpg" alt="background" />
-        </Paper>{' '}
-      </Grid>
+
       <CssBaseline></CssBaseline>
     </Grid>
   );
