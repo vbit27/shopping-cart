@@ -1,4 +1,4 @@
-import { createContext, SetStateAction } from 'react';
+import { createContext } from 'react';
 
 export const CartContext = createContext<ContextType | undefined>(undefined);
 

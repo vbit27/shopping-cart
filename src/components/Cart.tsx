@@ -11,7 +11,10 @@ import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: ' 350',
+  },
+  container: {
+    marginTop: '10vh',
   },
 });
 
@@ -50,51 +53,53 @@ const Cart: FC = () => {
   const classes = useStyles();
 
   return (
-    <Grid container>
+    <Grid container className={classes.container}>
       {Object.entries(cart).map(([key, quantity], i) => (
-        <Card key={key} className={classes.root}>
-          <CardMedia
-            component="img"
-            alt="Contemplative Reptile"
-            height="140"
-            image={`/images/${key}.jpg`}
-            title="Contemplative Reptile"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              {filterSelection(key).name}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {quantity}
-            </Typography>
-            <Typography>{quantity * filterSelection(key).price} €</Typography>
-          </CardContent>
-          <CardActions>
-            <Button
-              variant="outlined"
-              size="small"
-              color="primary"
-              onClick={() => handleIncrement(key)}
-            >
-              +
-            </Button>
-            <Button
-              variant="outlined"
-              size="small"
-              color="primary"
-              onClick={() => handleDecrement(key)}
-            >
-              -
-            </Button>
-            <Button
-              size="small"
-              color="primary"
-              onClick={() => handleRemove(key)}
-            >
-              Delete
-            </Button>
-          </CardActions>
-        </Card>
+        <Grid key={key} item xs={12} sm={6} md={4}>
+          <Card className={classes.root}>
+            <CardMedia
+              component="img"
+              alt="Contemplative Reptile"
+              height="140"
+              image={`/images/${key}.jpg`}
+              title="Contemplative Reptile"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {filterSelection(key).name}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {quantity}
+              </Typography>
+              <Typography>{quantity * filterSelection(key).price} €</Typography>
+            </CardContent>
+            <CardActions>
+              <Button
+                variant="outlined"
+                size="small"
+                color="primary"
+                onClick={() => handleIncrement(key)}
+              >
+                +
+              </Button>
+              <Button
+                variant="outlined"
+                size="small"
+                color="primary"
+                onClick={() => handleDecrement(key)}
+              >
+                -
+              </Button>
+              <Button
+                size="small"
+                color="primary"
+                onClick={() => handleRemove(key)}
+              >
+                Delete
+              </Button>
+            </CardActions>
+          </Card>
+        </Grid>
       ))}
 
       <Button variant="contained" color="primary">
