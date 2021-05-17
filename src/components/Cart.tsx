@@ -1,9 +1,7 @@
 import { CartContext } from '../CartContext';
-
 import React, { FC, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -98,6 +96,10 @@ const Cart: FC = () => {
           </CardActions>
         </Card>
       ))}
+
+      <Button variant="contained" color="primary">
+        Purchase
+      </Button>
     </Grid>
   );
 };
@@ -110,10 +112,5 @@ const items = [
   { name: 'Item 5', image: '/images/item5.jpg', id: '105', price: 50 },
   { name: 'Item 6', image: '/images/item6.jpg', id: '106', price: 90 },
 ];
-
-interface Item {
-  id: string;
-  quantity: number;
-}
 
 export default Cart;
