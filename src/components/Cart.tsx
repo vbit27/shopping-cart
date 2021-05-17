@@ -20,6 +20,19 @@ const useStyles = makeStyles({
 const Cart: FC = () => {
   const { cart, setCart } = useContext(CartContext)!;
 
+  const filterSelection = (key: string) => {
+    const selected = items.filter((x) => x.id === key);
+
+    return selected[0];
+  };
+
+  const handleRemove = (key: string) => {
+    const updatedCart = Object.assign({}, cart);
+    delete updatedCart[key];
+
+    setCart(updatedCart);
+  };
+
   const classes = useStyles();
 
   return (
@@ -35,18 +48,20 @@ const Cart: FC = () => {
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
-              {key}
+              {filterSelection(key).name}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
               {quantity}
             </Typography>
+            <Typography>{quantity * filterSelection(key).price} €</Typography>
           </CardContent>
           <CardActions>
-            <Button size="small" color="primary">
-              Share
-            </Button>
-            <Button size="small" color="primary">
-              Learn More
+            <Button
+              size="small"
+              color="primary"
+              onClick={() => handleRemove(key)}
+            >
+              Delete
             </Button>
           </CardActions>
         </Card>
