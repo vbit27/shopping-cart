@@ -3,7 +3,6 @@ import {
   CssBaseline,
   Grid,
   makeStyles,
-  Paper,
   Typography,
 } from '@material-ui/core';
 import React, { FC } from 'react';
@@ -18,13 +17,18 @@ const useStyles = makeStyles((theme) => ({
 
     backgroundColor: '#ffedd6',
   },
-  grid: {},
   image: {
     backgroundImage: '../images/101.jpg',
   },
   link: {
     textDecoration: 'none',
     color: 'white',
+  },
+  title: {
+    margin: '1rem',
+  },
+  resize: {
+    fontSize: '5rem',
   },
 }));
 
@@ -39,10 +43,27 @@ const Home: FC = () => {
       justify="space-between"
       alignItems="center"
     >
-      <Grid item xs={12} sm={6} md={4}>
-        <Typography variant="h3">Your Online Grocery Shop</Typography>
-        <Typography variant="h5">fresh and organic</Typography>
-        <Button variant="contained" size="large" color="primary">
+      <Grid item xs={12} sm={10} md={5}>
+        <Typography
+          className={classes.title}
+          color="textSecondary"
+          variant="h1"
+        >
+          Your Online Grocery Shop
+        </Typography>
+        <Typography
+          className={classes.title}
+          color="textSecondary"
+          variant="h5"
+        >
+          fresh and organic
+        </Typography>
+        <Button
+          className={classes.title}
+          variant="contained"
+          size="large"
+          color="secondary"
+        >
           <Link className={classes.link} to="./shop">
             Shop Now
           </Link>

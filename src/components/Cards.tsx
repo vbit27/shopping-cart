@@ -87,7 +87,7 @@ const Cards: FC<CardsProp> = (props) => {
               <Button
                 variant="contained"
                 size="large"
-                color="primary"
+                color="secondary"
                 onClick={() => handleAddToCart(item.id)}
               >
                 Add to Cart

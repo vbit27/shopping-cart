@@ -28,7 +28,7 @@ export default function Header() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
+      <AppBar color="secondary" position="fixed">
         <Toolbar>
           <Typography
             variant="h5"
