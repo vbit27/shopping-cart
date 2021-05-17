@@ -63,10 +63,10 @@ const Home: FC = () => {
           variant="contained"
           size="large"
           color="secondary"
+          component={Link}
+          to="/shop"
         >
-          <Link className={classes.link} to="./shop">
-            Shop Now
-          </Link>
+          Shop Now
         </Button>
       </Grid>
 

@@ -112,7 +112,7 @@ const Cart: FC = () => {
 };
 
 const items = [
-  { name: 'Item 1', image: '/images/item1.jpg', id: '101', price: 50 },
+  { name: 'Watermelon', image: '/images/item1.jpg', id: '101', price: 50 },
   { name: 'Item 2', image: '/images/item2.jpg', id: '102', price: 60 },
   { name: 'Item 3', image: '/images/item3.jpg', id: '103', price: 70 },
   { name: 'Item 4', image: '/images/item4.jpg', id: '104', price: 50 },

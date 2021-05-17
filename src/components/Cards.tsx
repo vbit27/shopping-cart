@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { FiShoppingCart } from 'react-icons/fi';
 
 const useStyles = makeStyles({
   root: {
@@ -23,6 +24,9 @@ const useStyles = makeStyles({
   },
   media: {
     height: 200,
+  },
+  actions: {
+    justifyContent: 'center',
   },
 });
 
@@ -54,15 +58,11 @@ const Cards: FC<CardsProp> = (props) => {
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                  Cucumber
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  Lizards are a widespread group of squamate reptiles, with over
-                  6,000 species, ranging across all continents except Antarctica
+                  {item.name}: {item.price} €
                 </Typography>
               </CardContent>
             </CardActionArea>
-            <CardActions>
+            <CardActions className={classes.actions}>
               <Typography variant="h5" component="p">
                 {props.quantity[item.id as keyof Quantity]}
               </Typography>
@@ -82,15 +82,14 @@ const Cards: FC<CardsProp> = (props) => {
               >
                 -
               </Button>
-            </CardActions>
-            <CardActions>
+
               <Button
                 variant="contained"
                 size="large"
                 color="secondary"
                 onClick={() => handleAddToCart(item.id)}
               >
-                Add to Cart
+                <FiShoppingCart />
               </Button>
             </CardActions>
           </Card>
