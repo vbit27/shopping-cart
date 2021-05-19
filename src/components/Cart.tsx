@@ -3,6 +3,7 @@ import React, { FC, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { Grid } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import './Cart.css';
 
 const useStyles = makeStyles({
@@ -74,9 +75,8 @@ const Cart: FC = () => {
           className={classes.purchase}
           variant="contained"
           color="secondary"
-          onClick={() => {
-            handlePurchase();
-          }}
+          component={Link}
+          to="/shop"
         >
           Go Back to shop
         </Button>
