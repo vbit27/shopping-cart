@@ -1,13 +1,8 @@
 import { CartContext } from '../CartContext';
 import React, { FC, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import { Grid, Paper } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import './Cart.css';
 
 const useStyles = makeStyles({
@@ -18,6 +13,11 @@ const useStyles = makeStyles({
     marginTop: '10vh',
     marginLeft: 'auto',
     marginRight: 'auto',
+  },
+  purchase: {
+    width: 'fit-content',
+    padding: '0.5rem 2rem',
+    margin: '2rem auto',
   },
 });
 
@@ -63,13 +63,16 @@ const Cart: FC = () => {
       direction="column"
       xs={11}
       sm={9}
+      lg={6}
       className={classes.container}
     >
       {Object.entries(cart).map(([key, quantity], i) => (
         <div className="item-container">
           <img src={`/images/${key}.jpg`} alt="hi" />
-          <div>{filterSelection(key).name}</div>
-          <div>{quantity}</div>
+          <div>
+            <h3>{filterSelection(key).name} </h3>
+          </div>
+          <div>{quantity} kg</div>
           <div>{filterSelection(key).price * quantity} €</div>
           <div>
             <Button
@@ -90,7 +93,7 @@ const Cart: FC = () => {
             </Button>
             <Button
               size="small"
-              color="primary"
+              color="secondary"
               onClick={() => handleRemove(key)}
             >
               Delete
@@ -99,7 +102,11 @@ const Cart: FC = () => {
         </div>
       ))}
 
-      <Button variant="contained" color="primary">
+      <Button
+        className={classes.purchase}
+        variant="contained"
+        color="secondary"
+      >
         Purchase
       </Button>
     </Grid>
@@ -108,11 +115,11 @@ const Cart: FC = () => {
 
 const items = [
   { name: 'Watermelon', image: '/images/item1.jpg', id: '101', price: 50 },
-  { name: 'Item 2', image: '/images/item2.jpg', id: '102', price: 60 },
-  { name: 'Item 3', image: '/images/item3.jpg', id: '103', price: 70 },
-  { name: 'Item 4', image: '/images/item4.jpg', id: '104', price: 50 },
-  { name: 'Item 5', image: '/images/item5.jpg', id: '105', price: 50 },
-  { name: 'Item 6', image: '/images/item6.jpg', id: '106', price: 90 },
+  { name: 'Ananas', image: '/images/item2.jpg', id: '102', price: 60 },
+  { name: 'Grapes', image: '/images/item3.jpg', id: '103', price: 70 },
+  { name: 'Lemon', image: '/images/item4.jpg', id: '104', price: 50 },
+  { name: 'Cherries', image: '/images/item5.jpg', id: '105', price: 50 },
+  { name: 'Paprika', image: '/images/item6.jpg', id: '106', price: 90 },
 ];
 
 export default Cart;
