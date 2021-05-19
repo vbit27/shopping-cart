@@ -55,7 +55,34 @@ const Cart: FC = () => {
     setCart(updatedCart);
   };
 
+  const handlePurchase = () => {
+    setCart({});
+    alert('Thank you for your purchase');
+  };
+
   const classes = useStyles();
+
+  if (Object.keys(cart).length === 0) {
+    return (
+      <div className="container-empty-cart">
+        <img
+          className="empty-cart"
+          src="/images/empty-cart.png"
+          alt="empty-cart"
+        />
+        <Button
+          className={classes.purchase}
+          variant="contained"
+          color="secondary"
+          onClick={() => {
+            handlePurchase();
+          }}
+        >
+          Go Back to shop
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <Grid
@@ -106,6 +133,9 @@ const Cart: FC = () => {
         className={classes.purchase}
         variant="contained"
         color="secondary"
+        onClick={() => {
+          handlePurchase();
+        }}
       >
         Purchase
       </Button>
