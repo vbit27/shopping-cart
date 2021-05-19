@@ -7,14 +7,17 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { Grid } from '@material-ui/core';
+import { Grid, Paper } from '@material-ui/core';
+import './Cart.css';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: ' 350',
+    maxWidth: '200',
   },
   container: {
     marginTop: '10vh',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
 });
 
@@ -55,53 +58,45 @@ const Cart: FC = () => {
   const classes = useStyles();
 
   return (
-    <Grid container className={classes.container}>
+    <Grid
+      container
+      direction="column"
+      xs={11}
+      sm={9}
+      className={classes.container}
+    >
       {Object.entries(cart).map(([key, quantity], i) => (
-        <Grid key={key} item xs={12} sm={6} md={4}>
-          <Card className={classes.root}>
-            <CardMedia
-              component="img"
-              alt="Contemplative Reptile"
-              height="140"
-              image={`/images/${key}.jpg`}
-              title="Contemplative Reptile"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                {filterSelection(key).name}
-              </Typography>
-              <Typography variant="body2" color="textSecondary" component="p">
-                {quantity}
-              </Typography>
-              <Typography>{quantity * filterSelection(key).price} €</Typography>
-            </CardContent>
-            <CardActions>
-              <Button
-                variant="outlined"
-                size="small"
-                color="primary"
-                onClick={() => handleIncrement(key)}
-              >
-                +
-              </Button>
-              <Button
-                variant="outlined"
-                size="small"
-                color="primary"
-                onClick={() => handleDecrement(key)}
-              >
-                -
-              </Button>
-              <Button
-                size="small"
-                color="primary"
-                onClick={() => handleRemove(key)}
-              >
-                Delete
-              </Button>
-            </CardActions>
-          </Card>
-        </Grid>
+        <div className="item-container">
+          <img src={`/images/${key}.jpg`} alt="hi" />
+          <div>{filterSelection(key).name}</div>
+          <div>{quantity}</div>
+          <div>{filterSelection(key).price * quantity} €</div>
+          <div>
+            <Button
+              variant="outlined"
+              size="small"
+              color="primary"
+              onClick={() => handleIncrement(key)}
+            >
+              +
+            </Button>
+            <Button
+              variant="outlined"
+              size="small"
+              color="primary"
+              onClick={() => handleDecrement(key)}
+            >
+              -
+            </Button>
+            <Button
+              size="small"
+              color="primary"
+              onClick={() => handleRemove(key)}
+            >
+              Delete
+            </Button>
+          </div>
+        </div>
       ))}
 
       <Button variant="contained" color="primary">

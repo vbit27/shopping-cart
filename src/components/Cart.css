@@ -1,0 +1,12 @@
+.item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgb(216, 216, 216);
+}
+
+img {
+  width: 100px;
+}
